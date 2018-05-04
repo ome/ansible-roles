@@ -1,0 +1,40 @@
+---
+sudo: required
+language: python
+
+services:
+  - docker
+
+python: "2.7"
+
+virtualenv:
+  system_site_packages: false
+
+install:
+- pip install --upgrade setuptools
+- cd ome-ansible-molecule-dependencies && python setup.py install
+
+script:
+# Some roles can't be properly tested in Docker
+# These should provide an alternative configuration just for testing syntax
+- if [ -f molecule-docker.yml ]; then mv molecule-docker.yml molecule.yml; fi
+- ../scripts/test.sh
+
+### GENERATED ###
+env:
+- ROLE=ansible-role-basedeps
+- ROLE=ansible-role-cadvisor
+### GENERATED ###
+
+### molecule syntax check only
+
+matrix:
+  allow_failures:
+  # Uses a non-standard test from upstream
+  - env: ROLE=haproxy
+  # No molecule.yml or test.yml (tested by munin role)
+  - env: ROLE=munin-node
+  # Molecule test doesn't work
+  - env: ROLE=omero-logmonitor
+  # Broken (deprecated?)
+  - env: ROLE=omero-web-apps
