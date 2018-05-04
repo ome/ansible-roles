@@ -23,6 +23,7 @@ install:
 script:
 # Some roles can't be properly tested in Docker
 # These should provide an alternative configuration just for testing syntax
+- cd $ROLE
 - if [ -f molecule-docker.yml ]; then mv molecule-docker.yml molecule.yml; fi
 - ../scripts/test.sh
 
