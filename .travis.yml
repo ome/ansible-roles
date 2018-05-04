@@ -20,21 +20,50 @@ script:
 - if [ -f molecule-docker.yml ]; then mv molecule-docker.yml molecule.yml; fi
 - ../scripts/test.sh
 
-### GENERATED ###
 env:
-- ROLE=ansible-role-basedeps
-- ROLE=ansible-role-cadvisor
-### GENERATED ###
-
-### molecule syntax check only
-
-matrix:
-  allow_failures:
-  # Uses a non-standard test from upstream
-  - env: ROLE=haproxy
-  # No molecule.yml or test.yml (tested by munin role)
-  - env: ROLE=munin-node
-  # Molecule test doesn't work
-  - env: ROLE=omero-logmonitor
-  # Broken (deprecated?)
-  - env: ROLE=omero-web-apps
+ - ROLE=ansible-role-debug-dumpallvars
+ - ROLE=ansible-role-munin
+ - ROLE=ansible-role-basedeps
+ - ROLE=ansible-role-java
+ - ROLE=ansible-role-cli-utils
+ - ROLE=ansible-role-docker
+ - ROLE=ansible-role-docker-tools
+ - ROLE=ansible-role-ice
+ - ROLE=ansible-role-jekyll-build
+ - ROLE=ansible-role-local-accounts
+ - ROLE=ansible-role-logrotate
+ - ROLE=ansible-role-lvm-partition
+ - ROLE=ansible-role-nginx
+ - ROLE=ansible-role-nginx-proxy
+ - ROLE=ansible-role-nginx-ssl-selfsigned
+ - ROLE=ansible-role-omero-python-deps
+ - ROLE=ansible-role-omero-server
+ - ROLE=ansible-role-omero-web-runtime
+ - ROLE=ansible-role-postgresql
+ - ROLE=ansible-role-redis
+ - ROLE=ansible-role-selinux-utils
+ - ROLE=ansible-role-versioncontrol-utils
+ - ROLE=ansible-role-system-monitor-agent
+ - ROLE=ansible-role-analysis-tools
+ - ROLE=ansible-role-network-cloud-interfaces
+ - ROLE=ansible-role-nfs-mount
+ - ROLE=ansible-role-nfs-share
+ - ROLE=ansible-role-openstack-volume-storage
+ - ROLE=ansible-role-python-pydata
+ - ROLE=ansible-role-samba-client
+ - ROLE=ansible-role-storage-volume-initialise
+ - ROLE=ansible-role-sudoers
+ - ROLE=ansible-role-upgrade-distpackages
+ - ROLE=ansible-role-hosts-populate
+ - ROLE=ansible-role-omero-user
+ - ROLE=ansible-role-reboot-server
+ - ROLE=ansible-role-rsync-server
+ - ROLE=ansible-role-devspace
+ - ROLE=ansible-role-mysql-backup
+ - ROLE=ansible-role-prometheus
+ - ROLE=ansible-role-celery-docker
+ - ROLE=ansible-role-omero-common
+ - ROLE=ansible-role-omego
+ - ROLE=ansible-role-omero-web
+ - ROLE=ansible-role-cadvisor
+ - ROLE=ansible-role-prometheus-node
