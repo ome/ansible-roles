@@ -18,7 +18,7 @@ virtualenv:
 
 install:
 - pip install --upgrade setuptools
-- cd ome-ansible-molecule-dependencies && python setup.py install
+- (cd ome-ansible-molecule-dependencies && python setup.py install)
 
 script:
 # Some roles can't be properly tested in Docker
