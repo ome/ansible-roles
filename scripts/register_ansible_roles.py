@@ -13,12 +13,14 @@ services:
 
 python: "2.7"
 
+cache: pip
+
 virtualenv:
   system_site_packages: false
 
 install:
 - pip install --upgrade setuptools
-- (cd ome-ansible-molecule-dependencies && python setup.py install)
+- python ome-ansible-molecule-dependencies/setup.py install
 
 script:
 # Some roles can't be properly tested in Docker
