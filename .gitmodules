@@ -151,3 +151,9 @@
 [submodule "ansible-role-prometheus-node"]
 	path = ansible-role-prometheus-node
 	url = https://github.com/openmicroscopy/ansible-role-prometheus-node
+[submodule "ansible-role-network"]
+	path = ansible-role-network
+	url = https://github.com/openmicroscopy/ansible-role-network
+[submodule "ansible-role-ssl-certificate"]
+	path = ansible-role-ssl-certificate
+	url = https://github.com/openmicroscopy/ansible-role-ssl-certificate

@@ -50,11 +50,10 @@ subprocess.call([
     "git", "submodule", "add", URL,'ome-ansible-molecule-dependencies'])
 
 
-GH_REPOS = 'https://api.github.com/orgs/openmicroscopy/repos?per_page=200'
+GH_SEARCH_API = 'https://api.github.com/search/repositories'
+GH_REPOS = GH_SEARCH_API + '?q=ansible-role+in:file+org:openmicroscopy'
 r = requests.get(GH_REPOS)
-for i in r.json():
-    if not i['name'].startswith('ansible-role'):
-        continue
+for i in r.json()['items']:
     subprocess.call(["git", "submodule", "add", i['html_url'], i['name']])
     
     if i['name'] in TESTS_EXCLUSION:
