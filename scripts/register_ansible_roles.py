@@ -39,10 +39,10 @@ TESTS_EXCLUSION = {
     "ansible-role-haproxy": "Uses a non-standard test from upstream",
     "ansible-role-munin-node":
         "No molecule.yml or test.yml (tested by munin role)",
-    "ansible-role-omero-logmonitor":
-        "Molecule test doesn't work",
-    "ansible-role-omero-web-apps":
-        "Broken (deprecated?)",
+    "ansible-role-omero-logmonitor": "Molecule test doesn't work",
+    "ansible-role-omero-web-apps": "Broken (deprecated?)",
+    "ansible-role-devspace": "",
+    "ansible-role-celery-docker": "",
 }
 
 URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
