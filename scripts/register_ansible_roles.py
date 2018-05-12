@@ -44,6 +44,8 @@ TESTS_EXCLUSION = {
     "ansible-role-devspace": "",
     "ansible-role-docker": "",
     "ansible-role-celery-docker": "",
+    "ansible-role-prometheus": "",
+    "ansible-role-nginx-ssl-selfsigned": "Deprecated",
 }
 
 URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
