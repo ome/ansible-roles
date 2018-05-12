@@ -44,7 +44,6 @@ env:
  - ROLE=ansible-role-sudoers
  - ROLE=ansible-role-nginx
  - ROLE=ansible-role-mysql-backup
- - ROLE=ansible-role-docker
  - ROLE=ansible-role-logrotate
  - ROLE=ansible-role-nfs-mount
  - ROLE=ansible-role-upgrade-distpackages

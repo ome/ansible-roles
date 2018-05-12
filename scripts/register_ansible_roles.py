@@ -42,6 +42,7 @@ TESTS_EXCLUSION = {
     "ansible-role-omero-logmonitor": "Molecule test doesn't work",
     "ansible-role-omero-web-apps": "Broken (deprecated?)",
     "ansible-role-devspace": "",
+    "ansible-role-docker": "",
     "ansible-role-celery-docker": "",
 }
 
