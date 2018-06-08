@@ -157,3 +157,24 @@
 [submodule "ansible-role-ssl-certificate"]
 	path = ansible-role-ssl-certificate
 	url = https://github.com/openmicroscopy/ansible-role-ssl-certificate
+[submodule "ansible-role-fluentd"]
+	path = ansible-role-fluentd
+	url = https://github.com/openmicroscopy/ansible-role-fluentd
+[submodule "ansible-role-prometheus-postgres"]
+	path = ansible-role-prometheus-postgres
+	url = https://github.com/openmicroscopy/ansible-role-prometheus-postgres
+[submodule "infrastructure-extract-ansible-role"]
+	path = infrastructure-extract-ansible-role
+	url = https://github.com/openmicroscopy/infrastructure-extract-ansible-role
+[submodule "ansible-role-prometheus-jmx"]
+	path = ansible-role-prometheus-jmx
+	url = https://github.com/openmicroscopy/ansible-role-prometheus-jmx
+[submodule "ansible-role-anonymous-ftp"]
+	path = ansible-role-anonymous-ftp
+	url = https://github.com/openmicroscopy/ansible-role-anonymous-ftp
+[submodule "ansible-role-docker-slack-notifier"]
+	path = ansible-role-docker-slack-notifier
+	url = https://github.com/openmicroscopy/ansible-role-docker-slack-notifier
+[submodule "ansible-role-python-virtualenv-upstream"]
+	path = ansible-role-python-virtualenv-upstream
+	url = https://github.com/openmicroscopy/ansible-role-python-virtualenv-upstream
