@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 
 import requests
-import os
 import subprocess
 
 TRAVIS_CONTENT = """---
@@ -50,17 +49,27 @@ TESTS_EXCLUSION = {
 
 URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
 subprocess.call([
-    "git", "submodule", "add", URL,'ome-ansible-molecule-dependencies'])
+    "git", "submodule", "add", URL, 'ome-ansible-molecule-dependencies'])
 
 
 GH_SEARCH_API = 'https://api.github.com/search/repositories'
 GH_REPOS = GH_SEARCH_API + '?q=ansible-role+in:file+org:openmicroscopy'
-r = requests.get(GH_REPOS)
-for i in r.json()['items']:
-    subprocess.call(["git", "submodule", "add", i['html_url'], i['name']])
-    
-    if i['name'] in TESTS_EXCLUSION:
+
+
+def get_repos():
+    response = requests.get(GH_REPOS)
+    repos = response.json()['items']
+    while 'next' in response.links.keys():
+        response = requests.get(response.links['next']['url'])
+        repos.extend(response.json()['items'])
+    return repos
+
+
+for repo in get_repos():
+    subprocess.call([
+        "git", "submodule", "add", repo['html_url'], repo['name']])
+
+    if repo['name'] in TESTS_EXCLUSION:
         continue
     with open(".travis.yml", "a") as f:
-        f.write(" - ROLE=%s\n" % i['name'])
-    
+        f.write(" - ROLE=%s\n" % repo['name'])
