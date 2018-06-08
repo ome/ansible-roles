@@ -19,7 +19,7 @@ virtualenv:
 
 install:
 - pip install --upgrade setuptools
-- python ome-ansible-molecule-dependencies/setup.py install
+- pip install ome-ansible-molecule-dependencies/
 
 script:
 # Some roles can't be properly tested in Docker
@@ -73,3 +73,6 @@ for repo in get_repos():
         continue
     with open(".travis.yml", "a") as f:
         f.write(" - ROLE=%s\n" % repo['name'])
+
+subprocess.call([
+    "git", "submodule", "update",  "--remote"])
