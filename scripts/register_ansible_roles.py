@@ -35,16 +35,18 @@ with open(".travis.yml", "w") as f:
     f.write(TRAVIS_CONTENT)
 
 TESTS_EXCLUSION = {
+    "ansible-role-debug-dumpallvars": "broken",
     "ansible-role-haproxy": "Uses a non-standard test from upstream",
     "ansible-role-munin-node":
         "No molecule.yml or test.yml (tested by munin role)",
     "ansible-role-omero-logmonitor": "Molecule test doesn't work",
     "ansible-role-omero-web-apps": "Broken (deprecated?)",
-    "ansible-role-devspace": "",
-    "ansible-role-docker": "",
-    "ansible-role-celery-docker": "",
+    "ansible-role-devspace": "Docker/docker",
+    "ansible-role-docker": "Docker/docker",
+    "ansible-role-celery-docker": "Docker/docker",
     "ansible-role-prometheus": "",
     "ansible-role-nginx-ssl-selfsigned": "Deprecated",
+    "ome-ansible-molecule-dependencies": "Meta package",
 }
 
 URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
