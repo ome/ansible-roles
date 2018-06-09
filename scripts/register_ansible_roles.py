@@ -67,7 +67,7 @@ def get_repos():
     return repos
 
 
-for repo in get_repos():
+for repo in sorted(get_repos()):
     subprocess.call([
         "git", "submodule", "add", repo['html_url'], repo['name']])
 
