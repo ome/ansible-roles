@@ -42,7 +42,6 @@ TESTS_EXCLUSION = {
     "ansible-role-omero-logmonitor": "Molecule test doesn't work",
     "ansible-role-omero-web-apps": "Broken (deprecated?)",
     "ansible-role-devspace": "Docker/docker",
-    "ansible-role-docker": "Docker/docker",
     "ansible-role-celery-docker": "Docker/docker",
     "ansible-role-prometheus": "",
     "ansible-role-nginx-ssl-selfsigned": "Deprecated",
@@ -70,11 +69,11 @@ def get_repos():
 for repo in sorted(get_repos()):
     subprocess.call([
         "git", "submodule", "add", repo['html_url'], repo['name']])
-
+    subprocess.call([
+        "git", "submodule", "update",  "--remote", repo['name']])
     if repo['name'] in TESTS_EXCLUSION:
         continue
     with open(".travis.yml", "a") as f:
         f.write(" - ROLE=%s\n" % repo['name'])
 
-subprocess.call([
-    "git", "submodule", "update",  "--remote"])
+

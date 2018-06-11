@@ -31,6 +31,7 @@ env:
  - ROLE=ansible-role-cli-utils
  - ROLE=ansible-role-docker-slack-notifier
  - ROLE=ansible-role-docker-tools
+ - ROLE=ansible-role-docker
  - ROLE=ansible-role-fluentd
  - ROLE=ansible-role-hosts-populate
  - ROLE=ansible-role-ice
@@ -57,7 +58,6 @@ env:
  - ROLE=ansible-role-postgresql
  - ROLE=ansible-role-prometheus-jmx
  - ROLE=ansible-role-prometheus-node
- - ROLE=ansible-role-prometheus-postgres
  - ROLE=ansible-role-python-pydata
  - ROLE=ansible-role-python-virtualenv-upstream
  - ROLE=ansible-role-reboot-server
