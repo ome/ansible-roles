@@ -178,3 +178,12 @@
 [submodule "ansible-role-python-virtualenv-upstream"]
 	path = ansible-role-python-virtualenv-upstream
 	url = https://github.com/openmicroscopy/ansible-role-python-virtualenv-upstream
+[submodule "ansible-role-iptables-raw"]
+	path = ansible-role-iptables-raw
+	url = https://github.com/openmicroscopy/ansible-role-iptables-raw
+[submodule "ansible-role-omero-prometheus-exporter"]
+	path = ansible-role-omero-prometheus-exporter
+	url = https://github.com/openmicroscopy/ansible-role-omero-prometheus-exporter
+[submodule "ansible-role-omero-web-django-prometheus"]
+	path = ansible-role-omero-web-django-prometheus
+	url = https://github.com/openmicroscopy/ansible-role-omero-web-django-prometheus

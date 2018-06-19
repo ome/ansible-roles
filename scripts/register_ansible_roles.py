@@ -42,6 +42,8 @@ TESTS_EXCLUSION = {
     "ansible-role-omero-logmonitor": "Molecule test doesn't work",
     "ansible-role-omero-web-apps": "Broken (deprecated?)",
     "ansible-role-devspace": "Docker/docker",
+    "ansible-role-docker":
+        "docker_version used in molecule no longer available",
     "ansible-role-celery-docker": "Docker/docker",
     "ansible-role-prometheus": "",
     "ansible-role-nginx-ssl-selfsigned": "Deprecated",
