@@ -50,6 +50,8 @@ TESTS_EXCLUSION = {
     "ome-ansible-molecule-dependencies": "Meta package",
 }
 
+subprocess.call(["git", "submodule", "init"])
+
 URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
 subprocess.call([
     "git", "submodule", "add", URL, 'ome-ansible-molecule-dependencies'])
@@ -77,5 +79,4 @@ for repo in sorted(get_repos()):
         continue
     with open(".travis.yml", "a") as f:
         f.write(" - ROLE=%s\n" % repo['name'])
-
 
