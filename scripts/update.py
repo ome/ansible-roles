@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 
 import requests
-import os
 import subprocess
 
 TRAVIS_CONTENT = """---
@@ -20,7 +19,7 @@ virtualenv:
 
 install:
 - pip install --upgrade setuptools
-- python ome-ansible-molecule-dependencies/setup.py install
+- pip install ome-ansible-molecule-dependencies/
 
 script:
 # Some roles can't be properly tested in Docker
@@ -36,31 +35,48 @@ with open(".travis.yml", "w") as f:
     f.write(TRAVIS_CONTENT)
 
 TESTS_EXCLUSION = {
+    "ansible-role-debug-dumpallvars": "broken",
     "ansible-role-haproxy": "Uses a non-standard test from upstream",
     "ansible-role-munin-node":
         "No molecule.yml or test.yml (tested by munin role)",
     "ansible-role-omero-logmonitor": "Molecule test doesn't work",
     "ansible-role-omero-web-apps": "Broken (deprecated?)",
-    "ansible-role-devspace": "",
-    "ansible-role-docker": "",
-    "ansible-role-celery-docker": "",
+    "ansible-role-devspace": "Docker/docker",
+    "ansible-role-docker":
+        "docker_version used in molecule no longer available",
+    "ansible-role-celery-docker": "Docker/docker",
     "ansible-role-prometheus": "",
     "ansible-role-nginx-ssl-selfsigned": "Deprecated",
+    "ome-ansible-molecule-dependencies": "Meta package",
 }
+
+subprocess.call(["git", "submodule", "init"])
 
 URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
 subprocess.call([
-    "git", "submodule", "add", URL,'ome-ansible-molecule-dependencies'])
+    "git", "submodule", "add", URL, 'ome-ansible-molecule-dependencies'])
 
 
 GH_SEARCH_API = 'https://api.github.com/search/repositories'
 GH_REPOS = GH_SEARCH_API + '?q=ansible-role+in:file+org:openmicroscopy'
-r = requests.get(GH_REPOS)
-for i in r.json()['items']:
-    subprocess.call(["git", "submodule", "add", i['html_url'], i['name']])
-    
-    if i['name'] in TESTS_EXCLUSION:
+
+
+def get_repos():
+    response = requests.get(GH_REPOS)
+    repos = response.json()['items']
+    while 'next' in response.links.keys():
+        response = requests.get(response.links['next']['url'])
+        repos.extend(response.json()['items'])
+    return repos
+
+
+for repo in sorted(get_repos()):
+    subprocess.call([
+        "git", "submodule", "add", repo['html_url'], repo['name']])
+    subprocess.call([
+        "git", "submodule", "update",  "--remote", repo['name']])
+    if repo['name'] in TESTS_EXCLUSION:
         continue
     with open(".travis.yml", "a") as f:
-        f.write(" - ROLE=%s\n" % i['name'])
-    
+        f.write(" - ROLE=%s\n" % repo['name'])
+
