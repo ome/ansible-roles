@@ -1,7 +1,7 @@
 Ansible roles
 =============
 
-[![Build Status](https://travis-ci.org/ome/ansible-roles.svg)](https://travis-ci.org/openmicroscopy/ansible-roles)
+[![Build Status](https://travis-ci.org/ome/ansible-roles.svg)](https://travis-ci.org/ome/ansible-roles)
 
 
 A super-repository collecting of all the existing OME Ansible roles including

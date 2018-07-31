@@ -187,3 +187,6 @@
 [submodule "ansible-role-omero-web-django-prometheus"]
 	path = ansible-role-omero-web-django-prometheus
 	url = https://github.com/openmicroscopy/ansible-role-omero-web-django-prometheus
+[submodule "ansible-role-deploy-archive"]
+	path = ansible-role-deploy-archive
+	url = https://github.com/openmicroscopy/ansible-role-deploy-archive

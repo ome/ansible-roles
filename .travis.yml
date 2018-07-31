@@ -29,6 +29,7 @@ env:
  - ROLE=ansible-role-basedeps
  - ROLE=ansible-role-cadvisor
  - ROLE=ansible-role-cli-utils
+ - ROLE=ansible-role-deploy-archive
  - ROLE=ansible-role-docker-slack-notifier
  - ROLE=ansible-role-docker-tools
  - ROLE=ansible-role-fluentd
@@ -36,7 +37,6 @@ env:
  - ROLE=ansible-role-ice
  - ROLE=ansible-role-iptables-raw
  - ROLE=ansible-role-java
- - ROLE=ansible-role-jekyll-build
  - ROLE=ansible-role-local-accounts
  - ROLE=ansible-role-logrotate
  - ROLE=ansible-role-lvm-partition

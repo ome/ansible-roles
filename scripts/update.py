@@ -47,6 +47,7 @@ TESTS_EXCLUSION = {
     "ansible-role-celery-docker": "Docker/docker",
     "ansible-role-prometheus": "",
     "ansible-role-nginx-ssl-selfsigned": "Deprecated",
+    "ansible-role-jekyll-build": "Deprecated",
     "ome-ansible-molecule-dependencies": "Meta package",
 }
 
