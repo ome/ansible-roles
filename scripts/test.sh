@@ -3,5 +3,5 @@
 if molecule list -s travis; then
     molecule test -s travis
 else
-    molecule test
+    molecule test --all
 fi

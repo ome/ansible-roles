@@ -181,3 +181,6 @@
 [submodule "ansible-role-postgresql-backup"]
 	path = ansible-role-postgresql-backup
 	url = https://github.com/openmicroscopy/ansible-role-postgresql-backup
+[submodule "ansible-role-certbot"]
+	path = ansible-role-certbot
+	url = https://github.com/openmicroscopy/ansible-role-certbot

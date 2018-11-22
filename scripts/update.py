@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+import os.path
 import requests
 import subprocess
 
@@ -19,14 +20,10 @@ virtualenv:
 
 install:
 - pip install --upgrade setuptools
-- pip install ome-ansible-molecule-dependencies/
+- pip install ome-ansible-molecule/
 
 script:
-# Some roles can't be properly tested in Docker
-# These should provide an alternative configuration just for testing syntax
-- cd $ROLE
-- if [ -f molecule-docker.yml ]; then mv molecule-docker.yml molecule.yml; fi
-- ../scripts/test.sh
+- cd $ROLE && ../scripts/test.sh
 
 env:
 """
@@ -36,7 +33,6 @@ with open(".travis.yml", "w") as f:
 
 TESTS_EXCLUSION = {
     "ansible-role-debug-dumpallvars": "broken",
-    "ansible-role-haproxy": "Uses a non-standard test from upstream",
     "ansible-role-munin-node":
         "No molecule.yml or test.yml (tested by munin role)",
     "ansible-role-omero-logmonitor": "Molecule test doesn't work",
@@ -48,19 +44,18 @@ TESTS_EXCLUSION = {
     "ansible-role-prometheus": "",
     "ansible-role-nginx-ssl-selfsigned": "Deprecated",
     "ansible-role-jekyll-build": "Deprecated",
-    "ome-ansible-molecule-dependencies": "Meta package",
+    "ome-ansible-molecule": "Meta package",
 }
 
 subprocess.call(["git", "submodule", "init"])
 
-URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
+URL = "https://github.com/openmicroscopy/ome-ansible-molecule"
 subprocess.call([
-    "git", "submodule", "add", URL, 'ome-ansible-molecule-dependencies'])
+    "git", "submodule", "add", URL, 'ome-ansible-molecule'])
 
 
 GH_SEARCH_API = 'https://api.github.com/search/repositories'
-GH_REPOS = GH_SEARCH_API + '?q=ansible-role+in:file+org:openmicroscopy'
-
+GH_REPOS = GH_SEARCH_API + '?q=ansible-role+in:name+archived:false+fork:true+user:openmicroscopy'
 
 def get_repos():
     response = requests.get(GH_REPOS)
@@ -77,6 +72,8 @@ for repo in sorted(get_repos()):
     subprocess.call([
         "git", "submodule", "update",  "--remote", repo['name']])
     if repo['name'] in TESTS_EXCLUSION:
+        continue
+    if not os.path.exists(os.path.join(repo['name'], 'molecule')):
         continue
     with open(".travis.yml", "a") as f:
         f.write(" - ROLE=%s\n" % repo['name'])
