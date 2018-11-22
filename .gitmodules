@@ -31,9 +31,6 @@
 [submodule "ansible-role-ice"]
 	path = ansible-role-ice
 	url = https://github.com/openmicroscopy/ansible-role-ice
-[submodule "ansible-role-jekyll-build"]
-	path = ansible-role-jekyll-build
-	url = https://github.com/openmicroscopy/ansible-role-jekyll-build
 [submodule "ansible-role-local-accounts"]
 	path = ansible-role-local-accounts
 	url = https://github.com/openmicroscopy/ansible-role-local-accounts
@@ -49,18 +46,12 @@
 [submodule "ansible-role-nginx-proxy"]
 	path = ansible-role-nginx-proxy
 	url = https://github.com/openmicroscopy/ansible-role-nginx-proxy
-[submodule "ansible-role-nginx-ssl-selfsigned"]
-	path = ansible-role-nginx-ssl-selfsigned
-	url = https://github.com/openmicroscopy/ansible-role-nginx-ssl-selfsigned
 [submodule "ansible-role-omero-python-deps"]
 	path = ansible-role-omero-python-deps
 	url = https://github.com/openmicroscopy/ansible-role-omero-python-deps
 [submodule "ansible-role-omero-server"]
 	path = ansible-role-omero-server
 	url = https://github.com/openmicroscopy/ansible-role-omero-server
-[submodule "ansible-role-omero-web-runtime"]
-	path = ansible-role-omero-web-runtime
-	url = https://github.com/openmicroscopy/ansible-role-omero-web-runtime
 [submodule "ansible-role-postgresql"]
 	path = ansible-role-postgresql
 	url = https://github.com/openmicroscopy/ansible-role-postgresql
@@ -163,9 +154,6 @@
 [submodule "ansible-role-prometheus-postgres"]
 	path = ansible-role-prometheus-postgres
 	url = https://github.com/openmicroscopy/ansible-role-prometheus-postgres
-[submodule "infrastructure-extract-ansible-role"]
-	path = infrastructure-extract-ansible-role
-	url = https://github.com/openmicroscopy/infrastructure-extract-ansible-role
 [submodule "ansible-role-prometheus-jmx"]
 	path = ansible-role-prometheus-jmx
 	url = https://github.com/openmicroscopy/ansible-role-prometheus-jmx
