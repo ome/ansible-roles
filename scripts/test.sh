@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -d molecule/travis ]; then
+if molecule list -s travis; then
     molecule test -s travis
 else
     molecule test
