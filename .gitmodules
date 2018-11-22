@@ -1,6 +1,6 @@
-[submodule "ome-ansible-molecule-dependencies"]
-	path = ome-ansible-molecule-dependencies
-	url = https://github.com/openmicroscopy/ome-ansible-molecule-dependencies
+[submodule "ome-ansible-molecule"]
+	path = ome-ansible-molecule
+	url = https://github.com/openmicroscopy/ome-ansible-molecule
 [submodule "ansible-role-debug-dumpallvars"]
 	path = ansible-role-debug-dumpallvars
 	url = https://github.com/openmicroscopy/ansible-role-debug-dumpallvars
