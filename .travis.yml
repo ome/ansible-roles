@@ -22,6 +22,7 @@ script:
 env:
  - ROLE=ansible-role-basedeps
  - ROLE=ansible-role-haproxy
+ - ROLE=ansible-role-ice
  - ROLE=ansible-role-java
  - ROLE=ansible-role-postgresql
  - ROLE=ansible-role-ssl-certificate
