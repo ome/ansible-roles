@@ -24,5 +24,9 @@ env:
  - ROLE=ansible-role-haproxy
  - ROLE=ansible-role-ice
  - ROLE=ansible-role-java
+ - ROLE=ansible-role-nginx
+ - ROLE=ansible-role-omego
+ - ROLE=ansible-role-omero-common
  - ROLE=ansible-role-postgresql
  - ROLE=ansible-role-ssl-certificate
+ - ROLE=ansible-role-versioncontrol-utils
