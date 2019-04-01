@@ -21,6 +21,7 @@ script:
 
 env:
  - ROLE=ansible-role-basedeps
+ - ROLE=ansible-role-deploy-archive
  - ROLE=ansible-role-haproxy
  - ROLE=ansible-role-ice
  - ROLE=ansible-role-java
@@ -28,6 +29,8 @@ env:
  - ROLE=ansible-role-nginx
  - ROLE=ansible-role-omego
  - ROLE=ansible-role-omero-common
+ - ROLE=ansible-role-omero-python-deps
  - ROLE=ansible-role-postgresql
+ - ROLE=ansible-role-python-pydata
  - ROLE=ansible-role-ssl-certificate
  - ROLE=ansible-role-versioncontrol-utils
