@@ -14,7 +14,8 @@ virtualenv:
 
 install:
 - pip install --upgrade setuptools
-- pip install ome-ansible-molecule-dependencies/
+- if [[ -d $ROLE/molecule ]]; then pip install ome-ansible-molecule/; else
+  pip install ome-ansible-molecule-dependencies; fi
 
 script:
 # Some roles can't be properly tested in Docker
