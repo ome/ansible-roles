@@ -59,6 +59,7 @@ env:
  - ROLE=ansible-role-omero-web
  - ROLE=ansible-role-openstack-volume-storage
  - ROLE=ansible-role-postgresql
+ - ROLE=ansible-role-postgresql-backup
  - ROLE=ansible-role-prometheus-jmx
  - ROLE=ansible-role-prometheus-node
  - ROLE=ansible-role-prometheus-postgres
