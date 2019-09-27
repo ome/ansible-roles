@@ -14,7 +14,8 @@ virtualenv:
 
 install:
 - pip install --upgrade setuptools
-- pip install ome-ansible-molecule-dependencies/
+- if [[ -d $ROLE/molecule ]]; then pip install ome-ansible-molecule/; else
+  pip install ome-ansible-molecule-dependencies; fi
 
 script:
 # Some roles can't be properly tested in Docker
@@ -58,6 +59,7 @@ env:
  - ROLE=ansible-role-omero-web
  - ROLE=ansible-role-openstack-volume-storage
  - ROLE=ansible-role-postgresql
+ - ROLE=ansible-role-postgresql-backup
  - ROLE=ansible-role-prometheus-jmx
  - ROLE=ansible-role-prometheus-node
  - ROLE=ansible-role-prometheus-postgres

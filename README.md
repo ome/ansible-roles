@@ -5,7 +5,7 @@ Ansible roles
 
 
 A super-repository collecting of all the existing OME Ansible roles including
-those released on [Galaxy](http://galaxy.ansible.com/openmicroscopy/).
+those released on [Galaxy](http://galaxy.ansible.com/ome/).
 
 Update
 ------
