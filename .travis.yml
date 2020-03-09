@@ -31,7 +31,6 @@ env:
  - ROLE=ansible-role-cadvisor
  - ROLE=ansible-role-cli-utils
  - ROLE=ansible-role-deploy-archive
- - ROLE=ansible-role-docker-slack-notifier
  - ROLE=ansible-role-docker-tools
  - ROLE=ansible-role-fluentd
  - ROLE=ansible-role-hosts-populate
@@ -64,7 +63,6 @@ env:
  - ROLE=ansible-role-prometheus-node
  - ROLE=ansible-role-prometheus-postgres
  - ROLE=ansible-role-python-pydata
- - ROLE=ansible-role-python-virtualenv-upstream
  - ROLE=ansible-role-reboot-server
  - ROLE=ansible-role-redis
  - ROLE=ansible-role-rsync-server
@@ -76,4 +74,3 @@ env:
  - ROLE=ansible-role-system-monitor-agent
  - ROLE=ansible-role-upgrade-distpackages
  - ROLE=ansible-role-versioncontrol-utils
- - ROLE=infrastructure-extract-ansible-role
