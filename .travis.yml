@@ -54,7 +54,6 @@ env:
  - ROLE=ansible-role-omero-server
  - ROLE=ansible-role-omero-user
  - ROLE=ansible-role-omero-web-django-prometheus
- - ROLE=ansible-role-omero-web-runtime
  - ROLE=ansible-role-omero-web
  - ROLE=ansible-role-openstack-volume-storage
  - ROLE=ansible-role-postgresql
