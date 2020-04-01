@@ -29,7 +29,7 @@ with open(".travis.yml", "w") as f:
 
 subprocess.call(["git", "submodule", "init"])
 
-URL = "https://github.com/openmicroscopy/ome-ansible-molecule"
+URL = "https://github.com/ome/ome-ansible-molecule"
 subprocess.call([
     "git", "submodule", "add", URL, 'ome-ansible-molecule'])
 
