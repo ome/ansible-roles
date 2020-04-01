@@ -21,6 +21,10 @@ install:
 script:
  - cd $ROLE && ../scripts/test.sh
 
+jobs:
+  allow_failures:
+  - ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
+
 env:
 """
 
