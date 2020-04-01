@@ -35,7 +35,7 @@ subprocess.call([
 
 
 GH_SEARCH_API = ('https://api.github.com/search/repositories'
-                 '?q=ansible-role-+in:name+org:ome')
+                 '?q=ansible-role-+in:name+org:ome+fork:true')
 
 
 def get_repos():
