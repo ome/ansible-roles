@@ -19,12 +19,14 @@ env:
  - ROLE=ansible-role-anonymous-ftp SCENARIO=default
  - ROLE=ansible-role-basedeps SCENARIO=default
  - ROLE=ansible-role-cadvisor SCENARIO=default
+ - ROLE=ansible-role-certbot SCENARIO=
  - ROLE=ansible-role-cli-utils SCENARIO=default
  - ROLE=ansible-role-debug-dumpallvars SCENARIO=
  - ROLE=ansible-role-deploy-archive SCENARIO=default
  - ROLE=ansible-role-docker SCENARIO=default
  - ROLE=ansible-role-docker-tools SCENARIO=
  - ROLE=ansible-role-fluentd SCENARIO=default
+ - ROLE=ansible-role-haproxy SCENARIO=default
  - ROLE=ansible-role-hosts-populate SCENARIO=default
  - ROLE=ansible-role-ice SCENARIO=ice36-ubuntu1804
  - ROLE=ansible-role-ice SCENARIO=ice36all
@@ -35,6 +37,8 @@ env:
  - ROLE=ansible-role-local-accounts SCENARIO=default
  - ROLE=ansible-role-logrotate SCENARIO=
  - ROLE=ansible-role-lvm-partition SCENARIO=
+ - ROLE=ansible-role-munin SCENARIO=default
+ - ROLE=ansible-role-munin-node SCENARIO=
  - ROLE=ansible-role-mysql-backup SCENARIO=default
  - ROLE=ansible-role-network SCENARIO=
  - ROLE=ansible-role-network-cloud-interfaces SCENARIO=
