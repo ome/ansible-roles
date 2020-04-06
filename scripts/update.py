@@ -23,7 +23,7 @@ script:
 
 jobs:
   allow_failures:
-  - ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
+  - env: ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
 
 env:
 """
