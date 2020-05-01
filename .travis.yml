@@ -68,7 +68,8 @@ env:
  - ROLE=ansible-role-omero-web SCENARIO=active
  - ROLE=ansible-role-omero-web-django-prometheus SCENARIO=default
  - ROLE=ansible-role-openstack-volume-storage SCENARIO=
- - ROLE=ansible-role-postgresql SCENARIO=default
+ - ROLE=ansible-role-postgresql SCENARIO=ubuntu1804
+ - ROLE=ansible-role-postgresql SCENARIO=centos7
  - ROLE=ansible-role-postgresql-backup SCENARIO=default
  - ROLE=ansible-role-postgresql-client SCENARIO=ubuntu1804
  - ROLE=ansible-role-postgresql-client SCENARIO=centos7
@@ -86,7 +87,7 @@ env:
  - ROLE=ansible-role-selinux-utils SCENARIO=default
  - ROLE=ansible-role-ssl-certificate SCENARIO=default
  - ROLE=ansible-role-storage-volume-initialise SCENARIO=
- - ROLE=ansible-role-sudoers SCENARIO=
+ - ROLE=ansible-role-sudoers SCENARIO=default
  - ROLE=ansible-role-system-monitor-agent SCENARIO=
  - ROLE=ansible-role-upgrade-distpackages SCENARIO=default
  - ROLE=ansible-role-versioncontrol-utils SCENARIO=default
