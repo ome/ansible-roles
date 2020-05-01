@@ -24,6 +24,9 @@ script:
 jobs:
   allow_failures:
   - env: ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
+  - env: ROLE=ansible-role-certbot SCENARIO=
+  - env: ROLE=ansible-role-docker SCENARIO=default
+  - env: ROLE=ansible-role-munin-node SCENARIO=
 
 env:
 """
