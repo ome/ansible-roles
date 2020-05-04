@@ -2,31 +2,31 @@
 
 import requests
 import subprocess
+import glob
+import os
 
 TRAVIS_CONTENT = """---
-sudo: required
+os: linux
+dist: xenial
 language: python
+python: "3.6"
 
 services:
   - docker
 
-python: "2.7"
-
-cache: pip
-
-virtualenv:
-  system_site_packages: false
-
 install:
-- pip install --upgrade setuptools
-- pip install ome-ansible-molecule-dependencies/
+ - pip install --upgrade setuptools
+ - pip install ome-ansible-molecule/
 
 script:
-# Some roles can't be properly tested in Docker
-# These should provide an alternative configuration just for testing syntax
-- cd $ROLE
-- if [ -f molecule-docker.yml ]; then mv molecule-docker.yml molecule.yml; fi
-- ../scripts/test.sh
+ - cd $ROLE && ../scripts/test.sh
+
+jobs:
+  allow_failures:
+  - env: ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
+  - env: ROLE=ansible-role-certbot SCENARIO=
+  - env: ROLE=ansible-role-docker SCENARIO=default
+  - env: ROLE=ansible-role-munin-node SCENARIO=
 
 env:
 """
@@ -34,36 +34,19 @@ env:
 with open(".travis.yml", "w") as f:
     f.write(TRAVIS_CONTENT)
 
-TESTS_EXCLUSION = {
-    "ansible-role-debug-dumpallvars": "broken",
-    "ansible-role-haproxy": "Uses a non-standard test from upstream",
-    "ansible-role-munin-node":
-        "No molecule.yml or test.yml (tested by munin role)",
-    "ansible-role-omero-logmonitor": "Molecule test doesn't work",
-    "ansible-role-omero-web-apps": "Broken (deprecated?)",
-    "ansible-role-devspace": "Docker/docker",
-    "ansible-role-docker":
-        "docker_version used in molecule no longer available",
-    "ansible-role-celery-docker": "Docker/docker",
-    "ansible-role-prometheus": "",
-    "ansible-role-nginx-ssl-selfsigned": "Deprecated",
-    "ansible-role-jekyll-build": "Deprecated",
-    "ome-ansible-molecule-dependencies": "Meta package",
-}
-
 subprocess.call(["git", "submodule", "init"])
 
-URL = "https://github.com/openmicroscopy/ome-ansible-molecule-dependencies"
+URL = "https://github.com/ome/ome-ansible-molecule"
 subprocess.call([
-    "git", "submodule", "add", URL, 'ome-ansible-molecule-dependencies'])
+    "git", "submodule", "add", URL, 'ome-ansible-molecule'])
 
 
-GH_SEARCH_API = 'https://api.github.com/search/repositories'
-GH_REPOS = GH_SEARCH_API + '?q=ansible-role+in:file+org:openmicroscopy'
+GH_SEARCH_API = ('https://api.github.com/search/repositories'
+                 '?q=ansible-role-+in:name+org:ome+fork:true')
 
 
 def get_repos():
-    response = requests.get(GH_REPOS)
+    response = requests.get(GH_SEARCH_API)
     repos = response.json()['items']
     while 'next' in response.links.keys():
         response = requests.get(response.links['next']['url'])
@@ -71,13 +54,21 @@ def get_repos():
     return repos
 
 
-for repo in sorted(get_repos()):
+for repo in sorted(get_repos(), key=lambda k: k['name']):
+    if repo['name'] == 'ansible-roles':
+        continue
+
     subprocess.call([
         "git", "submodule", "add", repo['html_url'], repo['name']])
-    subprocess.call([
-        "git", "submodule", "update",  "--remote", repo['name']])
-    if repo['name'] in TESTS_EXCLUSION:
+    if repo['archived']:
         continue
-    with open(".travis.yml", "a") as f:
-        f.write(" - ROLE=%s\n" % repo['name'])
 
+    molecule_files = glob.glob("%s/molecule/*/molecule.yml" % repo['name'])
+    if len(molecule_files) is 0:
+        with open(".travis.yml", "a") as f:
+            f.write(" - ROLE=%s SCENARIO=\n" % repo['name'])
+    else:
+        for molecule_file in molecule_files:
+            scenario = os.path.basename(os.path.dirname(molecule_file))
+            with open(".travis.yml", "a") as f:
+                f.write(" - ROLE=%s SCENARIO=%s\n" % (repo['name'], scenario))

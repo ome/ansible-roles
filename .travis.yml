@@ -1,7 +1,8 @@
 ---
+os: linux
+dist: xenial
 language: python
-
-sudo: required
+python: "3.6"
 
 services:
   - docker
@@ -13,63 +14,83 @@ install:
 script:
  - cd $ROLE && ../scripts/test.sh
 
+jobs:
+  allow_failures:
+  - env: ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
+  - env: ROLE=ansible-role-certbot SCENARIO=
+  - env: ROLE=ansible-role-docker SCENARIO=default
+  - env: ROLE=ansible-role-munin-node SCENARIO=
+
 env:
- - ROLE=ansible-role-analysis-tools SCENARIO=
- - ROLE=ansible-role-anonymous-ftp SCENARIO=
- - ROLE=ansible-role-basedeps SCENARIO=
- - ROLE=ansible-role-cadvisor SCENARIO=
- - ROLE=ansible-role-cli-utils SCENARIO=
- - ROLE=ansible-role-deploy-archive SCENARIO=
+ - ROLE=ansible-role-analysis-tools SCENARIO=default
+ - ROLE=ansible-role-anonymous-ftp SCENARIO=default
+ - ROLE=ansible-role-basedeps SCENARIO=default
+ - ROLE=ansible-role-cadvisor SCENARIO=default
+ - ROLE=ansible-role-certbot SCENARIO=
+ - ROLE=ansible-role-cli-utils SCENARIO=default
+ - ROLE=ansible-role-debug-dumpallvars SCENARIO=
+ - ROLE=ansible-role-deploy-archive SCENARIO=default
+ - ROLE=ansible-role-docker SCENARIO=default
  - ROLE=ansible-role-docker-tools SCENARIO=
- - ROLE=ansible-role-fluentd SCENARIO=
- - ROLE=ansible-role-hosts-populate SCENARIO=
+ - ROLE=ansible-role-fluentd SCENARIO=default
+ - ROLE=ansible-role-haproxy SCENARIO=default
+ - ROLE=ansible-role-hosts-populate SCENARIO=default
+ - ROLE=ansible-role-ice SCENARIO=ice36-ubuntu1804
  - ROLE=ansible-role-ice SCENARIO=ice36all
  - ROLE=ansible-role-ice SCENARIO=ice36minimal
- - ROLE=ansible-role-ice SCENARIO=ice36-ubuntu1804
- - ROLE=ansible-role-iptables-raw SCENARIO=
+ - ROLE=ansible-role-iptables-raw SCENARIO=default
  - ROLE=ansible-role-java SCENARIO=centos
  - ROLE=ansible-role-java SCENARIO=ubuntu
- - ROLE=ansible-role-local-accounts SCENARIO=
+ - ROLE=ansible-role-local-accounts SCENARIO=default
  - ROLE=ansible-role-logrotate SCENARIO=
  - ROLE=ansible-role-lvm-partition SCENARIO=
- - ROLE=ansible-role-mysql-backup SCENARIO=
- - ROLE=ansible-role-network-cloud-interfaces SCENARIO=
+ - ROLE=ansible-role-munin SCENARIO=default
+ - ROLE=ansible-role-munin-node SCENARIO=
+ - ROLE=ansible-role-mysql-backup SCENARIO=default
  - ROLE=ansible-role-network SCENARIO=
- - ROLE=ansible-role-nfs-mount SCENARIO=
- - ROLE=ansible-role-nfs-share SCENARIO=
- - ROLE=ansible-role-nginx-proxy SCENARIO=
- - ROLE=ansible-role-nginx SCENARIO=centos7
+ - ROLE=ansible-role-network-cloud-interfaces SCENARIO=
+ - ROLE=ansible-role-nfs-mount SCENARIO=default
+ - ROLE=ansible-role-nfs-share SCENARIO=default
  - ROLE=ansible-role-nginx SCENARIO=ubuntu1804
- - ROLE=ansible-role-omego SCENARIO=
- - ROLE=ansible-role-omero-common SCENARIO=
- - ROLE=ansible-role-omero-prometheus-exporter SCENARIO=
- - ROLE=ansible-role-omero-python-deps SCENARIO=
- - ROLE=ansible-role-omero-server SCENARIO=newdep
+ - ROLE=ansible-role-nginx SCENARIO=centos7
+ - ROLE=ansible-role-nginx-proxy SCENARIO=default
+ - ROLE=ansible-role-omego SCENARIO=default
+ - ROLE=ansible-role-omero-common SCENARIO=default
+ - ROLE=ansible-role-omero-logmonitor SCENARIO=default
+ - ROLE=ansible-role-omero-prometheus-exporter SCENARIO=default
+ - ROLE=ansible-role-omero-python-deps SCENARIO=default
  - ROLE=ansible-role-omero-server SCENARIO=python3
  - ROLE=ansible-role-omero-server SCENARIO=upgrade-py2py3
+ - ROLE=ansible-role-omero-server SCENARIO=newdep
  - ROLE=ansible-role-omero-server SCENARIO=upgradetovenv
  - ROLE=ansible-role-omero-user SCENARIO=
- - ROLE=ansible-role-omero-web-django-prometheus SCENARIO=
- - ROLE=ansible-role-omero-web SCENARIO=active
+ - ROLE=ansible-role-omero-web SCENARIO=active-py3-ubuntu1804
  - ROLE=ansible-role-omero-web SCENARIO=inactive
  - ROLE=ansible-role-omero-web SCENARIO=active-py3-centos7
- - ROLE=ansible-role-omero-web SCENARIO=active-py3-ubuntu1804
  - ROLE=ansible-role-omero-web SCENARIO=py2-py3-upgrade-centos7
+ - ROLE=ansible-role-omero-web SCENARIO=active
+ - ROLE=ansible-role-omero-web-django-prometheus SCENARIO=default
  - ROLE=ansible-role-openstack-volume-storage SCENARIO=
- - ROLE=ansible-role-postgresql SCENARIO=
- - ROLE=ansible-role-postgresql-backup SCENARIO=
- - ROLE=ansible-role-prometheus-jmx SCENARIO=
- - ROLE=ansible-role-prometheus-node SCENARIO=
- - ROLE=ansible-role-prometheus-postgres SCENARIO=
- - ROLE=ansible-role-python-pydata SCENARIO=
+ - ROLE=ansible-role-postgresql SCENARIO=ubuntu1804
+ - ROLE=ansible-role-postgresql SCENARIO=centos7
+ - ROLE=ansible-role-postgresql-backup SCENARIO=default
+ - ROLE=ansible-role-postgresql-client SCENARIO=ubuntu1804
+ - ROLE=ansible-role-postgresql-client SCENARIO=centos7
+ - ROLE=ansible-role-prometheus SCENARIO=default
+ - ROLE=ansible-role-prometheus-jmx SCENARIO=default
+ - ROLE=ansible-role-prometheus-node SCENARIO=default
+ - ROLE=ansible-role-prometheus-postgres SCENARIO=default
+ - ROLE=ansible-role-python-pydata SCENARIO=default
+ - ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py2
+ - ROLE=ansible-role-python3-virtualenv SCENARIO=interpreter-py3
  - ROLE=ansible-role-reboot-server SCENARIO=
- - ROLE=ansible-role-redis SCENARIO=
- - ROLE=ansible-role-rsync-server SCENARIO=
+ - ROLE=ansible-role-redis SCENARIO=default
+ - ROLE=ansible-role-rsync-server SCENARIO=default
  - ROLE=ansible-role-samba-client SCENARIO=
- - ROLE=ansible-role-selinux-utils SCENARIO=
- - ROLE=ansible-role-ssl-certificate SCENARIO=
+ - ROLE=ansible-role-selinux-utils SCENARIO=default
+ - ROLE=ansible-role-ssl-certificate SCENARIO=default
  - ROLE=ansible-role-storage-volume-initialise SCENARIO=
- - ROLE=ansible-role-sudoers SCENARIO=
+ - ROLE=ansible-role-sudoers SCENARIO=default
  - ROLE=ansible-role-system-monitor-agent SCENARIO=
- - ROLE=ansible-role-upgrade-distpackages SCENARIO=
- - ROLE=ansible-role-versioncontrol-utils SCENARIO=
+ - ROLE=ansible-role-upgrade-distpackages SCENARIO=default
+ - ROLE=ansible-role-versioncontrol-utils SCENARIO=default
