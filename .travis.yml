@@ -60,6 +60,7 @@ env:
  - ROLE=ansible-role-omero-prometheus-exporter SCENARIO=default
  - ROLE=ansible-role-omero-python-deps SCENARIO=default
  - ROLE=ansible-role-omero-server SCENARIO=python3
+ - ROLE=ansible-role-omero-server SCENARIO=python3-ubuntu1804
  - ROLE=ansible-role-omero-server SCENARIO=upgrade-py2py3
  - ROLE=ansible-role-omero-server SCENARIO=newdep
  - ROLE=ansible-role-omero-server SCENARIO=upgradetovenv
