@@ -1,6 +1,6 @@
 [submodule "ome-ansible-molecule"]
 	path = ome-ansible-molecule
-	url = https://github.com/ome/ome-ansible-molecule
+	url = https://github.com/manics/ome-ansible-molecule
 [submodule "ansible-role-debug-dumpallvars"]
 	path = ansible-role-debug-dumpallvars
 	url = https://github.com/ome/ansible-role-debug-dumpallvars
